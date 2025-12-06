@@ -1,0 +1,146 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  
+  body {
+    background: #0f172a;
+    color: #e5e7eb;
+    line-height: 1.6;
+  }
+  
+  header {
+    text-align: center;
+    padding: 1.5rem;
+    background: #020617;
+    border-bottom: 1px solid #1e293b;
+  }
+  
+  header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .tagline {
+    font-size: 0.95rem;
+    color: #9ca3af;
+    margin-top: 0.3rem;
+  }
+  
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 3rem;
+  }
+  
+  section {
+    margin-bottom: 2rem;
+    background: #020617;
+    padding: 1.2rem 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid #1e293b;
+  }
+  
+  section h2 {
+    margin-bottom: 0.75rem;
+    font-size: 1.4rem;
+  }
+  
+  h3 {
+    margin-top: 0.7rem;
+    margin-bottom: 0.4rem;
+    font-size: 1.1rem;
+  }
+  
+  ul {
+    margin-left: 1.2rem;
+  }
+  
+  .game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  canvas {
+    border-radius: 0.75rem;
+    border: 2px solid #38bdf8;
+    background: #020617;
+    display: block;
+  }
+  
+  .game-controls {
+    text-align: center;
+  }
+  
+  #restartButton {
+    padding: 0.5rem 1.25rem;
+    border-radius: 999px;
+    border: none;
+    background: #38bdf8;
+    color: #020617;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 0.25rem;
+  }
+  
+  #restartButton:hover {
+    background: #0ea5e9;
+  }
+  
+  .hint {
+    font-size: 0.85rem;
+    color: #9ca3af;
+  }
+  
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    border: 1px solid #1e293b;
+  }
+  
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .screenshot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  
+  .screenshot-grid img {
+    max-width: 100%;
+    border-radius: 0.75rem;
+    border: 1px solid #1e293b;
+  }
+  
+  figcaption {
+    font-size: 0.85rem;
+    color: #9ca3af;
+    margin-top: 0.35rem;
+  }
+  
+  .note {
+    font-size: 0.8rem;
+    color: #6b7280;
+    margin-top: 0.5rem;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 1rem;
+    border-top: 1px solid #1e293b;
+    background: #020617;
+    font-size: 0.8rem;
+  }
+  

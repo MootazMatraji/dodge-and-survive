@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dodge & Survive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Dodge & Survive</h1>
+    <p class="tagline">Survive as long as you can. One hit closer to game over.</p>
+  </header>
+
+  <main>
+    <!-- GAME SECTION -->
+    <section id="game-section">
+      <h2>Game</h2>
+      <div class="game-container">
+        <canvas id="gameCanvas" width="800" height="500"></canvas>
+        <div class="game-controls">
+          <button id="restartButton">Restart</button>
+          <p class="hint">Controls: WASD / Arrow keys to move, P to pause, R to restart</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESCRIPTION & INSTRUCTIONS -->
+    <section id="description">
+      <h2>Description & Instructions</h2>
+      <p>
+        <strong>Dodge & Survive</strong> is a 2D arcade-style survival game. You control a
+        small player square and must dodge incoming hazards for as long as possible.
+        As you survive, the game becomes harder: enemies spawn faster and move quicker,
+        and the environment changes.
+      </p>
+      <h3>How to Play</h3>
+      <ul>
+        <li>Use <strong>WASD</strong> or <strong>Arrow keys</strong> to move the player.</li>
+        <li>Avoid all moving hazards – each hit costs you one life.</li>
+        <li>You start with <strong>3 lives</strong>. When they’re gone, it’s <strong>Game Over</strong>.</li>
+        <li>Survive long enough to reach <strong>Level 2</strong> and watch the environment change.</li>
+        <li>Press <strong>P</strong> to pause/unpause, <strong>R</strong> or click <strong>Restart</strong> to play again.</li>
+      </ul>
+    </section>
+
+    <!-- CREDITS -->
+    <section id="credits">
+      <h2>Credits</h2>
+      <h3>Team Members</h3>
+      <ul>
+        <li>Your Name – Programming & Design</li>
+        <!-- Add more team members if you have them -->
+      </ul>
+
+      <h3>External Resources</h3>
+      <ul>
+        <li>HTML5 Canvas & JavaScript</li>
+        <li>Any sprite/sound sources you use (e.g. OpenGameArt, Itch assets, etc.)</li>
+      </ul>
+    </section>
+
+    <!-- DEMO VIDEO -->
+    <section id="demo-video">
+      <h2>Demo Video</h2>
+      <p>Here is a short demo of the game being played:</p>
+      <!-- Replace the src with your own YouTube / uploaded video link -->
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/VIDEO_ID_HERE"
+          title="Dodge & Survive Demo"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <p class="note">Replace <code>VIDEO_ID_HERE</code> with your actual demo video ID.</p>
+    </section>
+
+    <!-- SCREENSHOTS -->
+    <section id="screenshots">
+      <h2>Screenshots</h2>
+      <p>Here are some screenshots of the game:</p>
+      <div class="screenshot-grid">
+        <figure>
+          <img src="screenshots/gameplay1.png" alt="Gameplay Screenshot 1" />
+          <figcaption>Early game – Level 1 environment.</figcaption>
+        </figure>
+        <figure>
+          <img src="screenshots/gameplay2.png" alt="Gameplay Screenshot 2" />
+          <figcaption>Later game – Level 2 environment.</figcaption>
+        </figure>
+      </div>
+      <p class="note">
+        Make sure to place your PNG files in a <code>screenshots/</code> folder
+        with the matching names or update the paths here.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Your Name – Dodge & Survive</p>
+  </footer>
+
+  <script src="game.js"></script>
+</body>
+</html>
