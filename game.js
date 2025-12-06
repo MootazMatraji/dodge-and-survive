@@ -1,11 +1,6 @@
-// ==========================
-// Dodge & Survive - Game.js
-// ==========================
-
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
-// Game state
 let lastTime = 0;
 let player;
 let hazards = [];
@@ -15,30 +10,26 @@ let lives = 3;
 let score = 0;
 let level = 1;
 let spawnTimer = 0;
-let spawnInterval = 1000; // ms
+let spawnInterval = 1000; 
 let gameOver = false;
 let paused = false;
 
-// For a simple difficulty ramp
 const LEVEL_2_SCORE = 25;
 
-// Player setup
 function createPlayer() {
   return {
     x: canvas.width / 2 - 15,
     y: canvas.height - 70,
     width: 30,
     height: 30,
-    speed: 260, // pixels per second
+    speed: 260, 
     color: "#22c55e",
     invincible: false,
     invincibleTime: 0,
   };
 }
 
-// Hazard factory
 function createHazard() {
-  // Different types: small fast / big slow
   const type = Math.random() < 0.5 ? "small-fast" : "big-slow";
 
   let width, height, speed;
@@ -52,7 +43,6 @@ function createHazard() {
     speed = 160 + Math.random() * 80;
   }
 
-  // Spawn from top, random x
   const x = Math.random() * (canvas.width - width);
   const y = -height;
 
@@ -66,21 +56,19 @@ function createHazard() {
   };
 }
 
-// Stationary wall objects on sides
 function createWalls() {
   const thickness = 20;
   return [
-    { x: 0, y: 0, width: thickness, height: canvas.height }, // left wall
+    { x: 0, y: 0, width: thickness, height: canvas.height },
     {
       x: canvas.width - thickness,
       y: 0,
       width: thickness,
       height: canvas.height,
-    }, // right wall
+    },
   ];
 }
 
-// Input
 window.addEventListener("keydown", (e) => {
   keys[e.key.toLowerCase()] = true;
 
@@ -97,12 +85,10 @@ window.addEventListener("keyup", (e) => {
   keys[e.key.toLowerCase()] = false;
 });
 
-// Restart button
 document.getElementById("restartButton").addEventListener("click", () => {
   restartGame();
 });
 
-// Collision helper
 function isColliding(a, b) {
   return !(
     a.x + a.width < b.x ||
@@ -112,7 +98,6 @@ function isColliding(a, b) {
   );
 }
 
-// Initialize game
 function initGame() {
   player = createPlayer();
   hazards = [];
@@ -126,18 +111,15 @@ function initGame() {
   paused = false;
 }
 
-// Restart
 function restartGame() {
   initGame();
 }
 
-// Update function
 function update(deltaTime) {
   if (gameOver || paused) return;
 
-  const dt = deltaTime / 1000; // ms -> seconds
+  const dt = deltaTime / 1000;
 
-  // Move player
   let moveX = 0;
   let moveY = 0;
 
@@ -146,7 +128,6 @@ function update(deltaTime) {
   if (keys["w"] || keys["arrowup"]) moveY -= 1;
   if (keys["s"] || keys["arrowdown"]) moveY += 1;
 
-  // Normalize diagonal movement
   if (moveX !== 0 && moveY !== 0) {
     moveX *= Math.SQRT1_2;
     moveY *= Math.SQRT1_2;
@@ -155,7 +136,6 @@ function update(deltaTime) {
   player.x += moveX * player.speed * dt;
   player.y += moveY * player.speed * dt;
 
-  // Keep player inside canvas (respect walls)
   const wallThickness = walls[0].width;
   if (player.x < wallThickness) player.x = wallThickness;
   if (player.x + player.width > canvas.width - wallThickness) {
@@ -166,7 +146,6 @@ function update(deltaTime) {
     player.y = canvas.height - player.height;
   }
 
-  // Handle invincibility timer
   if (player.invincible) {
     player.invincibleTime -= deltaTime;
     if (player.invincibleTime <= 0) {
@@ -174,40 +153,35 @@ function update(deltaTime) {
     }
   }
 
-  // Spawn hazards
   spawnTimer += deltaTime;
   if (spawnTimer >= spawnInterval) {
     spawnTimer = 0;
     hazards.push(createHazard());
   }
 
-  // Move hazards
   for (let h of hazards) {
     h.y += h.speed * dt;
   }
 
-  // Remove off-screen hazards & increase score
   hazards = hazards.filter((h) => {
     if (h.y > canvas.height) {
-      score += 1; // survived another hazard
+      score += 1;
       return false;
     }
     return true;
   });
 
-  // Level up
   if (level === 1 && score >= LEVEL_2_SCORE) {
     level = 2;
-    spawnInterval = 700; // spawn faster
+    spawnInterval = 700; 
   }
 
-  // Check collisions
   if (!player.invincible) {
     for (let h of hazards) {
       if (isColliding(player, h)) {
         lives -= 1;
         player.invincible = true;
-        player.invincibleTime = 1200; // ms
+        player.invincibleTime = 1200;
         if (lives <= 0) {
           gameOver = true;
         }
@@ -217,14 +191,10 @@ function update(deltaTime) {
   }
 }
 
-// Draw function
 function draw() {
-  // Background changes by level
   if (level === 1) {
-    // Level 1: dark blue
     ctx.fillStyle = "#020617";
   } else {
-    // Level 2: neon-like
     const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
     gradient.addColorStop(0, "#0f172a");
     gradient.addColorStop(1, "#1d293a");
@@ -232,15 +202,13 @@ function draw() {
   }
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  // Stationary walls
   ctx.fillStyle = "#1f2937";
   walls.forEach((w) => {
     ctx.fillRect(w.x, w.y, w.width, w.height);
   });
 
-  // Player (flash if invincible)
   if (player.invincible && Math.floor(Date.now() / 100) % 2 === 0) {
-    ctx.fillStyle = "#bbf7d0"; // lighter for flashing
+    ctx.fillStyle = "#bbf7d0"; 
   } else {
     ctx.fillStyle = player.color;
   }
@@ -279,7 +247,6 @@ function draw() {
     );
   }
 
-  // Game Over overlay
   if (gameOver) {
     ctx.fillStyle = "rgba(15,23,42,0.8)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -304,7 +271,6 @@ function draw() {
   }
 }
 
-// Main loop
 function gameLoop(timestamp) {
   const deltaTime = timestamp - lastTime;
   lastTime = timestamp;
@@ -315,6 +281,5 @@ function gameLoop(timestamp) {
   requestAnimationFrame(gameLoop);
 }
 
-// Start
 initGame();
 requestAnimationFrame(gameLoop);
