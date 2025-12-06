@@ -49,14 +49,13 @@
       <h2>Credits</h2>
       <h3>Team Members</h3>
       <ul>
-        <li>Your Name – Programming & Design</li>
+        <li>Mootaz Matraji</li>
         <!-- Add more team members if you have them -->
       </ul>
 
       <h3>External Resources</h3>
       <ul>
         <li>HTML5 Canvas & JavaScript</li>
-        <li>Any sprite/sound sources you use (e.g. OpenGameArt, Itch assets, etc.)</li>
       </ul>
     </section>
 
@@ -66,15 +65,11 @@
       <p>Here is a short demo of the game being played:</p>
       <!-- Replace the src with your own YouTube / uploaded video link -->
       <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/VIDEO_ID_HERE"
-          title="Dodge & Survive Demo"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+        <video controls width="100%">
+            <source src="videos/demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>          
       </div>
-      <p class="note">Replace <code>VIDEO_ID_HERE</code> with your actual demo video ID.</p>
     </section>
 
     <!-- SCREENSHOTS -->
@@ -83,23 +78,19 @@
       <p>Here are some screenshots of the game:</p>
       <div class="screenshot-grid">
         <figure>
-          <img src="screenshots/gameplay1.png" alt="Gameplay Screenshot 1" />
+          <img src="pic1.png" alt="Gameplay Screenshot 1" />
           <figcaption>Early game – Level 1 environment.</figcaption>
         </figure>
         <figure>
-          <img src="screenshots/gameplay2.png" alt="Gameplay Screenshot 2" />
-          <figcaption>Later game – Level 2 environment.</figcaption>
+          <img src="pic2.png" alt="Gameplay Screenshot 2" />
+          <figcaption>Game Over.</figcaption>
         </figure>
-      </div>
-      <p class="note">
-        Make sure to place your PNG files in a <code>screenshots/</code> folder
-        with the matching names or update the paths here.
-      </p>
+    </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Your Name – Dodge & Survive</p>
+    <p>&copy; 2025 Mootaz Matraji – Dodge & Survive</p>
   </footer>
 
   <script src="game.js"></script>
